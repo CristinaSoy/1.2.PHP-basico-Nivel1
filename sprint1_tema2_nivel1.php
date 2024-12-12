@@ -109,36 +109,28 @@ function contar(int $a = 10, int $salto) : void {
         echo "Conteo " . $i . " Número:  " . $numero. "<br>";      
         $numero += $salto;
     }
-echo "Se han contado " . $i . " números";
+echo "<p>Se han contado " . $i . " números</p>";
 
 }
 
 //Exercici 5. Grau d'estudiant d'acord amb la nota.
 $nota = 60;
 
-echo "<br>";
-grau($nota);
-echo "<br>";
-
-function grau($nota) : void {
-    if ($nota<33) {
-        echo "L'estudiant ha de tornar a provar";
-    }
-    if ($nota>=33 && $nota<=44) {
-        echo "Tercera divisió";
-    }
-    if ($nota<=59 && $nota>=45) {
-        echo "Segona Divisió";
-    }
-    if ($nota>=60) {
-        echo "Primera Divisió";
-    }
+function calculaGrau(int $nota) : string {
+    $grau = match(true)  {
+        $nota<33 => "L'estudiant ha de tornar a provar",
+        $nota>=33 => "Tercera divisió",
+        $nota<=59 && $nota>=45 =>"Segona Divisió",
+        $nota>=60 => "Primera Divisió",
+    };
+    return "<p>$grau</p>";
 }
 
+echo calculaGrau($nota);
 //Exercici 6. 
 
-echo isBitten();
 function isBitten() : string {
-   return rand(1,10)>5 ? "Charly en va mossegar el dit" : "Charly no em va mossegar el dir";
-}
+   return rand(1, 10)>5 ? "Charly en va mossegar el dit" : "Charly no em va mossegar el dit";
+ }
+echo isBitten();
 ?>
